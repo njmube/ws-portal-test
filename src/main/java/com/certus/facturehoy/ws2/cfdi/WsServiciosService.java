@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "WsServiciosService", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", wsdlLocation = "http://173.201.18.113:9999/CFDI/WsServicios?WSDL")
+@WebServiceClient(name = "WsServiciosService", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", wsdlLocation = "http://65.50.243.178:8080/CFDI/WsServicios?wsdl")
 public class WsServiciosService
     extends Service
 {
@@ -30,7 +30,7 @@ public class WsServiciosService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://173.201.18.113:9999/CFDI/WsServicios?WSDL");
+            url = new URL("http://65.50.243.178:8080/CFDI/WsServicios?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

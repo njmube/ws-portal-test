@@ -1,0 +1,2 @@
+wsdlLocation = "http://65.50.243.178:8080/CFDI/WsServicios?wsdl"
+wsdlLocation = "http://65.50.243.178:8080/CFDI/WsEmisionTimbrado?wsdl"

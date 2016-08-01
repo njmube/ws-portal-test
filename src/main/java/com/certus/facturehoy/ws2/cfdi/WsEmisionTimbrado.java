@@ -8,6 +8,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
+import javax.xml.ws.FaultAction;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -77,6 +78,30 @@ public interface WsEmisionTimbrado {
      * 
      * @param usuario
      * @param contrasenia
+     * @param keyEncode
+     * @param uuid
+     * @return
+     *     returns com.certus.facturehoy.ws2.cfdi.WsResponseCancelacionBO
+     */
+    @WebMethod(operationName = "CancelarCFDI")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "CancelarCFDI", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", className = "com.certus.facturehoy.ws2.cfdi.CancelarCFDI")
+    @ResponseWrapper(localName = "CancelarCFDIResponse", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", className = "com.certus.facturehoy.ws2.cfdi.CancelarCFDIResponse")
+    @Action(input = "http://cfdi.ws2.facturehoy.certus.com/WsEmisionTimbrado/CancelarCFDIRequest", output = "http://cfdi.ws2.facturehoy.certus.com/WsEmisionTimbrado/CancelarCFDIResponse")
+    public WsResponseCancelacionBO cancelarCFDI(
+        @WebParam(name = "usuario", targetNamespace = "")
+        String usuario,
+        @WebParam(name = "contrasenia", targetNamespace = "")
+        String contrasenia,
+        @WebParam(name = "UUID", targetNamespace = "")
+        List<String> uuid,
+        @WebParam(name = "keyEncode", targetNamespace = "")
+        String keyEncode);
+
+    /**
+     * 
+     * @param usuario
+     * @param contrasenia
      * @param uuid
      * @return
      *     returns com.certus.facturehoy.ws2.cfdi.WsResponseBO
@@ -93,5 +118,64 @@ public interface WsEmisionTimbrado {
         String contrasenia,
         @WebParam(name = "UUID", targetNamespace = "")
         String uuid);
+
+    /**
+     * 
+     * @param usuario
+     * @param contrasenia
+     * @param uuid
+     * @return
+     *     returns com.certus.facturehoy.ws2.cfdi.WsResponseBO
+     */
+    @WebMethod(operationName = "RecuperarAcuseCancelacion")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "RecuperarAcuseCancelacion", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", className = "com.certus.facturehoy.ws2.cfdi.RecuperarAcuseCancelacion")
+    @ResponseWrapper(localName = "RecuperarAcuseCancelacionResponse", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", className = "com.certus.facturehoy.ws2.cfdi.RecuperarAcuseCancelacionResponse")
+    @Action(input = "http://cfdi.ws2.facturehoy.certus.com/WsEmisionTimbrado/RecuperarAcuseCancelacionRequest", output = "http://cfdi.ws2.facturehoy.certus.com/WsEmisionTimbrado/RecuperarAcuseCancelacionResponse")
+    public WsResponseBO recuperarAcuseCancelacion(
+        @WebParam(name = "usuario", targetNamespace = "")
+        String usuario,
+        @WebParam(name = "contrasenia", targetNamespace = "")
+        String contrasenia,
+        @WebParam(name = "UUID", targetNamespace = "")
+        String uuid);
+
+    /**
+     * 
+     * @param usuario
+     * @param contrasenia
+     * @param idServicio
+     * @param uuid
+     * @param pfx
+     * @param pfxPassword
+     * @param rfc
+     * @return
+     *     returns com.certus.facturehoy.ws2.cfdi.WsResponseBO
+     * @throws KeyStoreException_Exception
+     */
+    @WebMethod(operationName = "CancelaOtroPAC")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "CancelaOtroPAC", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", className = "com.certus.facturehoy.ws2.cfdi.CancelaOtroPAC")
+    @ResponseWrapper(localName = "CancelaOtroPACResponse", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", className = "com.certus.facturehoy.ws2.cfdi.CancelaOtroPACResponse")
+    @Action(input = "http://cfdi.ws2.facturehoy.certus.com/WsEmisionTimbrado/CancelaOtroPACRequest", output = "http://cfdi.ws2.facturehoy.certus.com/WsEmisionTimbrado/CancelaOtroPACResponse", fault = {
+        @FaultAction(className = KeyStoreException_Exception.class, value = "http://cfdi.ws2.facturehoy.certus.com/WsEmisionTimbrado/CancelaOtroPAC/Fault/KeyStoreException")
+    })
+    public WsResponseBO cancelaOtroPAC(
+        @WebParam(name = "usuario", targetNamespace = "")
+        String usuario,
+        @WebParam(name = "contrasenia", targetNamespace = "")
+        String contrasenia,
+        @WebParam(name = "RFC", targetNamespace = "")
+        String rfc,
+        @WebParam(name = "UUID", targetNamespace = "")
+        List<String> uuid,
+        @WebParam(name = "PFXPassword", targetNamespace = "")
+        String pfxPassword,
+        @WebParam(name = "PFX", targetNamespace = "")
+        byte[] pfx,
+        @WebParam(name = "idServicio", targetNamespace = "")
+        int idServicio)
+        throws KeyStoreException_Exception
+    ;
 
 }

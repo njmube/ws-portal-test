@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "WsEmisionTimbradoService", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", wsdlLocation = "http://65.50.243.178:8080/CFDI/WsEmisionTimbrado?wsdl")
+@WebServiceClient(name = "WsEmisionTimbradoService", targetNamespace = "http://cfdi.ws2.facturehoy.certus.com/", wsdlLocation = "http://66.225.192.223:8080/CFDI/WsEmisionTimbrado?wsdl")
 public class WsEmisionTimbradoService
     extends Service
 {
@@ -30,7 +30,7 @@ public class WsEmisionTimbradoService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://65.50.243.178:8080/CFDI/WsEmisionTimbrado?wsdl");
+            url = new URL("http://66.225.192.223:8080/CFDI/WsEmisionTimbrado?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

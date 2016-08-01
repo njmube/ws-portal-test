@@ -6,9 +6,8 @@
 	<version>1.0</version>
 	<name>certus-facturehoy-ws-test</name>
 	<description>Servicios Web Certus de Prueba</description>
-	
+
 	<build>
-		<finalName>certus-facturehoy-ws</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -27,4 +26,22 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<finalName>${artifactId}-${version}</finalName>
+			</build>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<build>
+				<finalName>certus-facturehoy-ws-${version}</finalName>
+			</build>
+		</profile>
+	</profiles>
 </project>

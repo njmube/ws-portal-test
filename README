@@ -1,0 +1,26 @@
+########################################
+#   Procedimiento para importar WSDL   #
+########################################
+
+1. Si existe algo en la ruta src/main/java se procede a eliminarlo:
+    rm -rf src/main/java/*
+
+2. Posteriormente importamos el primer WSDL correspondiente a los Servicios:
+    wsimport -s src/main/java/ -d target/ http://66.225.192.223:8080/CFDI/WsServicios?wsdl
+
+    La ip del servidor y el puerto pueden variar, la opcion -s indica donde se descargaran los fuentes, la opcion -d indica el directorio donde se descargaran los compilados. 
+
+3. Importamos el segundo WSDL correspondiente a la Emision de Timbrado:
+    wsimport -s src/main/java/ -d target/ http://66.225.192.223:8080/CFDI/WsEmisionTimbrado?wsdl
+
+    Las opciones funcionan de la misma misma manera que en el punto 2.
+
+4. Por ultimo recompilamos el proyecto y empaquetamos para obtener el jar:
+
+    mvn clean package
+
+    El jar se encuentrara en la carpeta target/
+    
+    Si se proporciona la opcion -P test, el nombre del jar sera certus-facturehoy-ws-test-1.0
+    
+    Si se proporciona la opcion -P prod, el nombre del jar sera certus-facturehoy-ws-1.0
